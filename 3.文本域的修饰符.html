@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <!-- number: 转化为数值
+             trim: 去掉前后的空格
+             lazy: 把input事件转换成change事件   
+        -->
+
+        <input type="text" v-model.number="number">
+        <input type="text" v-model.trim="msg">
+        <input type="text" v-model.lazy="name"><span v-text="name"></span>
+        <input type="button" value="确定" @click="handle"> 
+
+    </div>
+    
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                number:2,
+                msg:"备注信息",
+                name:"小明",
+            
+            },
+            methods: {
+                handle:function(){
+                    console.log(this.number+3);
+                }
+               
+            },
+        });
+    </script>
+</body>
+</html>

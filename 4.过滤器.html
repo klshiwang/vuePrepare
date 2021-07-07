@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="msg">
+        <p>{{msg | upper}}</p>
+        <p>{{msg | upper | lower}}</p>
+        <span :abc="msg | upper"> </span>   
+    </div>
+
+    <script>
+        //自定义外部过滤器
+        Vue.filter("upper", function (val) {
+            return val.charAt(0).toUpperCase() + val.substr(1);
+        });
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: ''
+            }, 
+            //自定义内部过滤器
+            //内部过滤器只能在组件内部使用
+            filters: {
+                lower: function (val) {
+                    return val.toLowerCase();
+                }
+            }
+
+
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <input type="text" v-color="color">
+        <input type="text" v-font="font" v-focus>
+
+    </div>
+
+    <script>
+        //自定义全局指令
+        Vue.directive("color", {
+            bind: function (el, binding) {
+                el.style.backgroundColor = binding.value.backgroundColor;
+                el.style.color = binding.value.color;
+            }
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: "hello",
+                color: {
+                    backgroundColor: "#f90",
+                    color: "blue"
+                },
+                font: {
+                    fontSize: "30px",
+                    fontFamily: "宋体"
+                }
+            },
+            //自定义局部指令
+            directives: {
+                font: {  
+                    bind: function (el, binding) {
+                        el.style.fontSize = binding.value.fontSize;
+                        el.style.fontFamily = binding.value.fontFamily;
+                    }
+                },
+                focus: {
+                    inserted: function (el) {
+                        el.focus();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

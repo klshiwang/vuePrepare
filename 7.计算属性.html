@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+
+
+
+    <div id="app">
+
+        <p v-text="msg"></p>
+
+        <!-- //使用计算属性只会计算一次 -->
+        <p v-text="reMsg"></p>
+        <p v-text="reMsg"></p>
+
+        <!-- //使用方法每次使用都会重新计算 -->
+        <p v-text="revMsg()"></p>
+        <p v-text="revMsg()"></p>
+
+
+    </div>
+
+    <script>
+        /*
+
+         计算属性和方法的区别:
+          计算属性是有缓存的, 如果值不发生变化那么不会重新计算,依赖的数据发生变化才会重新计算
+          方法是没有缓存的,每次使用都会重新计算一次.
+
+          *如果计算逻辑比较复杂,那么两者之间的性能差距就会比较大.
+         */
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: "world"
+            },
+            methods: {  //使用方法实现计算属性
+                revMsg:function(){
+                    console.log("methods");
+                    return this.msg.split("").reverse().join("");
+
+                }
+            },
+            computed: { //计算属性,通过函数的方式return计算后的数据
+                reMsg: function () {
+                    console.log("computed");
+                    return this.msg.split("").reverse().join("");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        input{
+            margin: 10px;
+        }
+    </style>
+    <script src="js/vue.js"></script>
+    
+</head>
+
+<body>
+
+    <div id="app">
+        <form action="">
+            <span>姓名</span><input type="text" id="name" v-model="name">
+            <br>
+
+            <span>简介</span> <textarea name="" id="" cols="30" rows="3" v-model="introduce"></textarea>
+            <br>
+            <span>性别</span>
+            <input type="radio" name="gender" value="1" v-model="gender">男
+            <input type="radio" name="gender" value="2" v-model="gender">女
+
+            <br>
+            <span>喜爱的运动</span>
+            <input type="checkbox" value="1" v-model="hobby">篮球
+            <input type="checkbox" value="2" v-model="hobby">乒乓球
+            <input type="checkbox" value="3" v-model="hobby">羽毛球
+            <br>
+
+            <span>职业</span>
+            <select name="" id=""  multiple v-model="occupation" >
+                <option value="0">请选择职业</option>
+                <option value="1" >教师</option>
+                <option value="2">律师</option>
+                <option value="3">工程师</option>
+            </select>
+            <br>
+            <input type="submit" @click.prevent="handle" >
+        </form>
+
+
+
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello",
+                introduce:"来自地球",
+                gender:2,
+                hobby:[2,3],
+                occupation:[2,1]
+            },
+            methods: {
+                handle:function(e){
+                    // console.log(this.name);
+                    // console.log(this.introduce);
+                    // console.log(this.hobby);
+                    console.log(this.occupation);
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
