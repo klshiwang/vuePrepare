@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  
+  <div id="app">
+    <div class="wrap">
+      <h1>{{title}}</h1>
+      <fieldset>
+        <legend>请选择星座</legend>
+        <input type="checkbox" name="xz" value="1" v-model="selected" @click="chkHandle"><label for="">狮子座</label><br/>
+        <input type="checkbox" name="xz" value="2" v-model="selected" @click="chkHandle"><label for="">摩羯座</label><br/>
+        <input type="checkbox" name="xz" value="3" v-model="selected" @click="chkHandle"><label for="">处女座</label><br/>
+        <input type="checkbox" name="xz" value="4" v-model="selected" @click="chkHandle"><label for="">天秤座</label><br/>
+      </fieldset>
+      <ul>
+        <li v-show="selected.includes('1')">
+          <h3>狮子座</h3>
+          <p>狮子座狮子座狮子座</p>
+        </li>
+        <li v-show="selected.includes('2')">
+          <h3>摩羯座</h3>
+          <p>摩羯座摩羯座摩羯座</p>
+        </li>
+        <li v-show="selected.includes('3')">
+          <h3>处女座</h3>
+          <p>处女座处女座处女座</p>
+        </li>
+        <li v-show="selected.includes('4')">
+          <h3>天秤座</h3>
+          <p>天秤座天秤座天秤座</p>
+        </li>
+        
+      </ul>
+
+    </div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el:"#app",
+      data:{
+        title:"星座分析器",
+        selected:["2","4"],
+
+      },
+      methods: {
+       chkHandle:function(e){
+        if(e.target.checked){
+          this.selected.push(e.target.value)
+          console.log(this.selected);
+        }
+       } 
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    .font-color{
+      color: red;
+    }
+    .font-size{
+      font-size: 30px;
+    }
+    [v-cloak]{
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+    <div id="app">
+
+      <!-- v-model指令 -->
+      <input type="text" v-model="name">
+      <fieldset >
+        <input type="checkbox" name="hobby" v-model="selected"  value="1">
+        <input type="checkbox" name="hobby" v-model="selected"  value="2">
+        <input type="checkbox" name="hobby" v-model="selected"  value="3">
+      </fieldset>
+
+      <!-- v-bind指令 -->
+      <p v-bind:class="{'font-color':iscolor,'font-size':issize}">通过b-bind指令改变本行字的颜色和大小</p>
+
+
+      <!-- v-cloak指令 -->
+      <p v-cloak>{{msg}}</p>
+    </div>
+    <script>
+      const vm = new Vue({
+        el:"#app",
+        data:{
+          msg:"v-cloak指令用于防止页面渲染数据加载过程中导致插值双大括号暴露在页面中",
+          name:"小明",
+          selected:[2,3],
+          iscolor:true,
+          issize:true
+        }
+      })
+    </script>
+</body>
+</html>

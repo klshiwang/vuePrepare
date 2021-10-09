@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <ul>
+      <li v-for="(item,name,index) in items" :key="item.">{{item.content}} {{name}} {{index}}</li>
+    </ul>
+
+    <input type="text" v-model="txt"> 
+    <button @click=""></button>
+  </div>
+  
+  <script>
+    const vm = new Vue({
+      el:"#app",
+      data:{
+        items:[
+          {content:"内容1"},
+          {content:"内容2"}
+        ],
+        txt:""
+      },
+      methods: {
+        handle:function(){
+          this.items.push({content:this.txt})
+        }
+      },
+    })
+  </script>
+</body>
+</html>
